@@ -45,7 +45,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-wide">
-              Marina
+              Nathalia
             </h1>
             <div className="flex items-center justify-center gap-4 my-4">
               <span className="w-16 md:w-24 h-px bg-white/60" />
@@ -53,7 +53,7 @@ export function HeroSection() {
               <span className="w-16 md:w-24 h-px bg-white/60" />
             </div>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-wide">
-              Rafael
+              David
             </h1>
           </motion.div>
 

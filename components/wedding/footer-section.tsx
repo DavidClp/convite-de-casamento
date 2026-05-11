@@ -16,7 +16,7 @@ export function FooterSection() {
         >
           <div className="flex items-center justify-center gap-3 mb-6">
             <Heart className="w-5 h-5 text-primary" fill="currentColor" />
-            <h2 className="font-serif text-3xl md:text-4xl">Marina & Rafael</h2>
+            <h2 className="font-serif text-3xl md:text-4xl">Nathalia & David</h2>
             <Heart className="w-5 h-5 text-primary" fill="currentColor" />
           </div>
 
@@ -35,7 +35,7 @@ export function FooterSection() {
               <Instagram className="w-5 h-5" />
             </a>
             <a
-              href="mailto:contato@marinaerafael.com"
+              href="mailto:contato@NathaliaeDavid.com"
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
             >
               <Mail className="w-5 h-5" />

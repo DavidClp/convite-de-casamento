@@ -26,7 +26,7 @@ const timelineEvents = [
     year: "2023",
     title: "O Pedido",
     description:
-      "Em Paris, diante da Torre Eiffel, Rafael pediu Marina em casamento.",
+      "Em Paris, diante da Torre Eiffel, David pediu Nathalia em casamento.",
   },
   {
     year: "2025",
@@ -67,9 +67,8 @@ export function TimelineSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`relative flex items-start gap-6 mb-12 last:mb-0 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              className={`relative flex items-start gap-6 mb-12 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
             >
               {/* Mobile Layout */}
               <div className="md:hidden flex items-start gap-6 w-full">
@@ -91,9 +90,8 @@ export function TimelineSection() {
 
               {/* Desktop Layout */}
               <div
-                className={`hidden md:block flex-1 ${
-                  index % 2 === 0 ? "text-right pr-12" : "text-left pl-12"
-                }`}
+                className={`hidden md:block flex-1 ${index % 2 === 0 ? "text-right pr-12" : "text-left pl-12"
+                  }`}
               >
                 <span className="text-sm font-medium text-primary">{event.year}</span>
                 <h3 className="font-serif text-xl text-foreground mt-1 mb-2">

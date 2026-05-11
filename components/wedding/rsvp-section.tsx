@@ -220,7 +220,7 @@ export function RSVPSection() {
                     </p>
                     <div className="flex items-center justify-center gap-2 text-primary">
                       <Heart className="w-4 h-4" fill="currentColor" />
-                      <span className="font-serif">Marina & Rafael</span>
+                      <span className="font-serif">Nathalia & David</span>
                       <Heart className="w-4 h-4" fill="currentColor" />
                     </div>
                   </motion.div>
