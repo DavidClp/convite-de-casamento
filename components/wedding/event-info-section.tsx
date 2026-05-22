@@ -23,12 +23,12 @@ const eventDetails = [
     description: "Chácara Vida Mansa",
     subtitle: "Linha E, 4 km depois do Aeroporto, Cacoal - RO",
   },
-  {
+ /*  {
     icon: Shirt,
     title: "Dress Code",
     description: "Traje Passeio Completo",
     subtitle: "",
-  },
+  }, */
 ]
 
 export function EventInfoSection() {

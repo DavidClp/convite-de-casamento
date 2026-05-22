@@ -2,9 +2,15 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Send, CheckCircle, Heart } from "lucide-react"
+import { Send, CheckCircle, Heart, Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,15 +22,19 @@ interface FormData {
   message: string
 }
 
+const MIN_GUESTS = 1
+const MAX_GUESTS = 10
+
 export function RSVPSection() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    guests: "0",
+    guests: "",
     phone: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [errors, setErrors] = useState<Partial<FormData>>({})
 
   const validateForm = (): boolean => {
@@ -34,16 +44,9 @@ export function RSVPSection() {
       newErrors.name = "Por favor, informe seu nome"
     }
 
-    console.log(parseInt(formData.guests))
-    console.log(parseInt(formData.guests) < 1)
-    if(parseInt(formData.guests) < 1) {
+    const guestsCount = parseInt(formData.guests, 10)
+    if (!formData.guests || isNaN(guestsCount) || guestsCount < MIN_GUESTS) {
       newErrors.guests = "Por favor, informe a quantidade total de pessoas"
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Por favor, informe seu telefone"
-    } else if (!/^\(?[0-9]{2}\)?[\s-]?[0-9]{4,5}[\s-]?[0-9]{4}$/.test(formData.phone.replace(/\s/g, ""))) {
-      newErrors.phone = "Formato de telefone inválido"
     }
 
     setErrors(newErrors)
@@ -51,19 +54,44 @@ export function RSVPSection() {
   }
 
 
-  console.log(errors)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!validateForm()) return
 
     setIsSubmitting(true)
+    setSubmitError(null)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch("/api/extra/casamento-confirmacao", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: formData.name.trim(),
+          quantidade_pessoas: parseInt(formData.guests, 10),
+          mensagem: formData.message.trim() || undefined,
+        }),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        throw new Error(
+          (typeof data.error === "string" && data.error) ||
+            "Não foi possível confirmar sua presença. Tente novamente."
+        )
+      }
+
+      setIsSubmitted(true)
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Não foi possível confirmar sua presença. Tente novamente."
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
@@ -73,6 +101,43 @@ export function RSVPSection() {
     setFormData((prev) => ({ ...prev, [name]: value }))
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+  }
+
+  const setGuests = (value: string) => {
+    setFormData((prev) => ({ ...prev, guests: value }))
+    if (errors.guests) {
+      setErrors((prev) => ({ ...prev, guests: undefined }))
+    }
+  }
+
+  const guestsCount =
+    formData.guests === "" ? null : parseInt(formData.guests, 10)
+
+  const handleGuestsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "")
+    if (value === "") {
+      setGuests("")
+      return
+    }
+    const num = parseInt(value, 10)
+    if (num <= MAX_GUESTS) {
+      setGuests(String(num))
+    }
+  }
+
+  const decrementGuests = () => {
+    if (guestsCount === null || guestsCount <= MIN_GUESTS) {
+      setGuests("")
+    } else {
+      setGuests(String(guestsCount - 1))
+    }
+  }
+
+  const incrementGuests = () => {
+    const current = guestsCount ?? 0
+    if (current < MAX_GUESTS) {
+      setGuests(String(current + 1))
     }
   }
 
@@ -94,7 +159,7 @@ export function RSVPSection() {
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
             Sua presença é o melhor presente que poderíamos receber.
-            Confirme até 5 de Junho de 2026.
+            Confirme até 12 de Junho de 2026.
           </p>
         </motion.div>
 
@@ -137,16 +202,43 @@ export function RSVPSection() {
                       <Label htmlFor="guests" className="text-foreground">
                         Quantidade total de pessoas
                       </Label>
-                      <Input
-                        id="guests"
-                        name="guests"
-                        type="number"
-                        min="0"
-                        max="10"
-                        value={formData.guests}
-                        onChange={handleChange}
-                        className="bg-background border-input"
-                      />
+                      <InputGroup
+                        className={`bg-background ${errors.guests ? "border-destructive" : ""}`}
+                      >
+                        <InputGroupAddon align="inline-start">
+                          <InputGroupButton
+                            type="button"
+                            size="icon-sm"
+                            onClick={decrementGuests}
+                            disabled={guestsCount === null}
+                            aria-label="Remover pessoa"
+                          >
+                            <Minus />
+                          </InputGroupButton>
+                        </InputGroupAddon>
+                        <InputGroupInput
+                          id="guests"
+                          name="guests"
+                          type="text"
+                          inputMode="numeric"
+                          value={formData.guests}
+                          onChange={handleGuestsChange}
+                          placeholder=""
+                          className="text-center"
+                          aria-invalid={!!errors.guests}
+                        />
+                        <InputGroupAddon align="inline-end">
+                          <InputGroupButton
+                            type="button"
+                            size="icon-sm"
+                            onClick={incrementGuests}
+                            disabled={guestsCount !== null && guestsCount >= MAX_GUESTS}
+                            aria-label="Adicionar pessoa"
+                          >
+                            <Plus />
+                          </InputGroupButton>
+                        </InputGroupAddon>
+                      </InputGroup>
                       {errors.guests && (
                         <p className="text-xs text-destructive">{errors.guests}</p>
                       )}
@@ -166,6 +258,12 @@ export function RSVPSection() {
                         className="bg-background border-input resize-none"
                       />
                     </div>
+
+                    {submitError && (
+                      <p className="text-sm text-destructive text-center">
+                        {submitError}
+                      </p>
+                    )}
 
                     <Button
                       type="submit"

@@ -20,7 +20,7 @@ export function HeroSection() {
     setLetterOpen(true)
     window.setTimeout(() =>{
       setOverlayGone(true)
-      shootHearts()
+/*       shootHearts() */
     }, OPEN_MS)
   }
 
