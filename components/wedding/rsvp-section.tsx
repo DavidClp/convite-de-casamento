@@ -34,6 +34,12 @@ export function RSVPSection() {
       newErrors.name = "Por favor, informe seu nome"
     }
 
+    console.log(parseInt(formData.guests))
+    console.log(parseInt(formData.guests) < 1)
+    if(parseInt(formData.guests) < 1) {
+      newErrors.guests = "Por favor, informe a quantidade total de pessoas"
+    }
+
     if (!formData.phone.trim()) {
       newErrors.phone = "Por favor, informe seu telefone"
     } else if (!/^\(?[0-9]{2}\)?[\s-]?[0-9]{4,5}[\s-]?[0-9]{4}$/.test(formData.phone.replace(/\s/g, ""))) {
@@ -44,6 +50,8 @@ export function RSVPSection() {
     return Object.keys(newErrors).length === 0
   }
 
+
+  console.log(errors)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -86,7 +94,7 @@ export function RSVPSection() {
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
             Sua presença é o melhor presente que poderíamos receber.
-            Confirme até 15 de Fevereiro de 2025.
+            Confirme até 5 de Junho de 2026.
           </p>
         </motion.div>
 
@@ -127,7 +135,7 @@ export function RSVPSection() {
 
                     <div className="space-y-2">
                       <Label htmlFor="guests" className="text-foreground">
-                        Quantidade de Acompanhantes
+                        Quantidade total de pessoas
                       </Label>
                       <Input
                         id="guests"
@@ -139,26 +147,8 @@ export function RSVPSection() {
                         onChange={handleChange}
                         className="bg-background border-input"
                       />
-                      <p className="text-xs text-muted-foreground">
-                        Informe quantas pessoas além de você
-                      </p>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-foreground">
-                        Telefone *
-                      </Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="(11) 99999-9999"
-                        className={`bg-background border-input ${errors.phone ? "border-destructive" : ""}`}
-                      />
-                      {errors.phone && (
-                        <p className="text-xs text-destructive">{errors.phone}</p>
+                      {errors.guests && (
+                        <p className="text-xs text-destructive">{errors.guests}</p>
                       )}
                     </div>
 

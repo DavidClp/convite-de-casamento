@@ -5,22 +5,28 @@ import { Heart } from "lucide-react"
 
 const timelineEvents = [
   {
-    year: "2018",
-    title: "O Primeiro Encontro",
+    year: "Julho de 2022",
+    title: "Inicio da amizade",
     description:
-      "Nos conhecemos em uma festa de amigos em comum. Foi amor à primeira vista.",
+      "Inicio de uma amizade por meio de um amizade em comum.",
   },
   {
-    year: "2019",
+    year: "Agosto de 2022",
+    title: "O Primeiro Rolê",
+    description:
+      "Uma rolé entre amigos em uma sorveteria",
+  },
+  {
+    year: "Agosto de 2022",
     title: "O Primeiro Beijo",
     description:
-      "Em uma noite estrelada, sob a luz da lua, trocamos nosso primeiro beijo.",
+      "Em uma noite da festa junina da escola, trocamos nosso primeiro beijo.",
   },
   {
-    year: "2020",
-    title: "Morar Juntos",
+    year: "Setembro de 2022",
+    title: "Pedido de namoro",
     description:
-      "Decidimos dar um grande passo e começar nossa vida juntos em um novo lar.",
+      "Em uma noite da festa junina da escola, David pediu Nathalia em namoro.",
   },
   {
     year: "2023",
@@ -29,7 +35,7 @@ const timelineEvents = [
       "Em Paris, diante da Torre Eiffel, David pediu Nathalia em casamento.",
   },
   {
-    year: "2025",
+    year: "Julho de 2026",
     title: "O Grande Dia",
     description:
       "Finalmente, o dia de celebrar nosso amor com todos que amamos.",

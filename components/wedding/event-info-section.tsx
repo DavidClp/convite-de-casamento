@@ -8,39 +8,39 @@ const eventDetails = [
   {
     icon: Calendar,
     title: "Data",
-    description: "15 de Março de 2025",
+    description: "18 de Julho de 2026",
     subtitle: "Sábado",
   },
   {
     icon: Clock,
     title: "Horário",
     description: "Cerimônia às 16h",
-    subtitle: "Chegada recomendada: 15h30",
+    subtitle: "",
   },
   {
     icon: MapPin,
     title: "Local",
-    description: "Fazenda Vila Rica",
-    subtitle: "Estrada Municipal, Km 12 - Campinas, SP",
+    description: "Chácara Vida Mansa",
+    subtitle: "Linha E, 4 km depois do Aeroporto, Cacoal - RO",
   },
   {
     icon: Shirt,
     title: "Dress Code",
     description: "Traje Passeio Completo",
-    subtitle: "Cores claras são bem-vindas",
+    subtitle: "",
   },
 ]
 
 export function EventInfoSection() {
-  return (
-    <section className="py-20 md:py-32 bg-background">
+  return (    
+    <section className="pb-15 pt-0 md:py-32 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4 font-light">
             Informações
@@ -80,7 +80,7 @@ export function EventInfoSection() {
         </div>
 
         {/* Additional Note */}
-        <motion.div
+       {/*  <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -97,7 +97,7 @@ export function EventInfoSection() {
               </p>
             </CardContent>
           </Card>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

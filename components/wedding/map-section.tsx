@@ -5,12 +5,11 @@ import { MapPin, Navigation, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
-const VENUE_ADDRESS = "Fazenda Vila Rica, Estrada Municipal, Km 12 - Campinas, SP"
+const VENUE_ADDRESS = "Chácara Vida Mansa, Linha E, 4 km depois do Aeroporto, Cacoal - RO"
 const MAPS_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29333.13144913098!2d-47.064252!3d-22.905856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8f6e8b5b5b5%3A0x8e8e8e8e8e8e8e8e!2sCampinas%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1699999999999!5m2!1spt-BR!2sbr"
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61916.0068757509!2d-61.48622919190894!3d-11.44490317788664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93c8269b1ccd1533%3A0x21e6c8566b02fc94!2sCh%C3%A1cara%20Vida%20Mansa!5e1!3m2!1spt-BR!2sbr!4v1778522393521!5m2!1spt-BR!2sbr"
 const MAPS_DIRECTIONS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Fazenda+Vila+Rica+Campinas+SP"
-
+  "https://www.google.com/maps/dir/?api=1&destination=Chácara+Vida+Mansa+Cacoal+RO"
 export function MapSection() {
   return (
     <section className="py-20 md:py-32 bg-muted/50">
@@ -63,7 +62,7 @@ export function MapSection() {
                       </div>
                       <div>
                         <h3 className="font-serif text-xl text-foreground mb-2">
-                          Fazenda Vila Rica
+                          Chácara Vida Mansa
                         </h3>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                           {VENUE_ADDRESS}

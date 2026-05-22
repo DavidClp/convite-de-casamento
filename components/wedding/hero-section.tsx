@@ -1,39 +1,85 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import { Heart } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { IconHandFinger } from "@tabler/icons-react"
+import { EnvelopeIntro } from "@/components/wedding/envelope-intro"
+import { EnvelopeIntro2 } from "./envelope-intro-2"
+import confetti from "canvas-confetti"
+
+/** Aba superior abre (~1.35s) + pausa antes do fade */
+const OPEN_MS = 500
 
 export function HeroSection() {
-  const scrollToRSVP = () => {
-    const element = document.getElementById("rsvp")
-    element?.scrollIntoView({ behavior: "smooth" })
+  const [letterOpen, setLetterOpen] = useState(false)
+  const [overlayGone, setOverlayGone] = useState(false)
+
+  const handleOpenLetter = () => {
+    if (letterOpen) return
+    setLetterOpen(true)
+    window.setTimeout(() =>{
+      setOverlayGone(true)
+      shootHearts()
+    }, OPEN_MS)
+  }
+
+  const revealSite = letterOpen && overlayGone
+
+  const shootHearts = () => {
+    const heart = confetti.shapeFromPath({
+      path: "M167 72c19-38 37-48 58-48 50 0 74 54 74 87 0 78-72 111-132 167C107 222 35 189 35 111c0-33 24-87 74-87 21 0 39 10 58 48z",
+    })
+
+    confetti({
+      origin: {
+        x: 0.5,
+        y: 0.3, // topo
+      },
+      particleCount: 300,
+      spread: 350,
+      startVelocity: 25,
+      scalar: 2,
+      shapes: [heart],
+      colors: ["#9a9f00", "#00c354", "#636B2F"],
+    })
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[calc(100vh-70px)] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
+      {/* <button
+        onClick={shootHearts}
+        className="px-4 py-2 rounded bg-pink-500 text-white z-50"
+      >
+        Soltar corações
+      </button> */}
+
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')`,
+          backgroundImage: `url('/photos/main.jpg')`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          animate={
+            revealSite
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 24 }
+          }
+          transition={{ duration: 1, delay: revealSite ? 0.15 : 0 }}
           className="space-y-6"
         >
           <motion.p
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            animate={revealSite ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8, delay: revealSite ? 0.35 : 0 }}
             className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light"
           >
             Vamos nos casar
@@ -41,8 +87,10 @@ export function HeroSection() {
 
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            animate={
+              revealSite ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }
+            }
+            transition={{ duration: 0.8, delay: revealSite ? 0.5 : 0 }}
           >
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-wide">
               Nathalia
@@ -59,50 +107,69 @@ export function HeroSection() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            animate={revealSite ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.8, delay: revealSite ? 0.65 : 0 }}
             className="space-y-4 pt-6"
           >
             <p className="text-xl md:text-2xl font-serif italic font-light">
-              {"\"O amor é a poesia dos sentidos\""}
+              {"\"O início do nosso para sempre\""}
             </p>
             <p className="text-lg md:text-xl tracking-[0.2em] font-light">
-              15 de Março de 2025
+              18 de Julho de 2026
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="pt-8"
-          >
-            <Button
-              onClick={scrollToRSVP}
-              size="lg"
-              className="bg-white/20 backdrop-blur-sm border border-white/40 text-white hover:bg-white/30 hover:border-white/60 transition-all duration-300 px-8 py-6 text-sm tracking-[0.2em] uppercase font-light"
-            >
-              Confirmar Presença
-            </Button>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
+      {revealSite && (
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          className="absolute bottom-16 left-1/2 z-20 -translate-x-1/2 md:bottom-10"
         >
-          <div className="w-1 h-2 bg-white/70 rounded-full" />
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="flex items-start justify-center rounded-full border-2 border-white/50 p-2"
+          >
+            <IconHandFinger stroke={2} className="text-white/70" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
+
+      {/* Envelope — tela inicial */}
+      <AnimatePresence>
+        {!overlayGone && (
+          <motion.div
+            key="letter"
+            className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-6"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <EnvelopeIntro2 onOpen={handleOpenLetter} /* letterOpen={letterOpen} onOpen={handleOpenLetter} */ />
+          </motion.div>
+        )}
+      </AnimatePresence>
+  {/*     <AnimatePresence>
+        {!overlayGone && (
+          <motion.div
+            key="letter"
+            className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-6 bg-neutral-950 px-3"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="pointer-events-none max-w-xs text-center font-sans text-[11px] font-light uppercase tracking-[0.35em] text-neutral-400 md:text-xs">
+              Toque no selo para abrir
+            </p>
+
+            <EnvelopeIntro letterOpen={letterOpen} onOpen={handleOpenLetter} />
+          </motion.div>
+        )}
+      </AnimatePresence> */}
     </section>
   )
 }

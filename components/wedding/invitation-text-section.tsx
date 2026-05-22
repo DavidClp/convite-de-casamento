@@ -5,7 +5,7 @@ import { Heart } from "lucide-react"
 
 export function InvitationTextSection() {
   return (
-    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
+    <section className="pt-20 pb-20 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full translate-x-1/2 translate-y-1/2" />
@@ -48,7 +48,7 @@ export function InvitationTextSection() {
 
           <div className="mt-12 flex items-center justify-center gap-4">
             <span className="w-24 h-px bg-border" />
-            <p className="font-serif text-xl text-primary">M & R</p>
+            <p className="font-serif text-xl text-primary">N & D</p>
             <span className="w-24 h-px bg-border" />
           </div>
         </motion.div>

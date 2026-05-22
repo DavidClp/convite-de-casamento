@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: 'Nathalia & David - Nosso Casamento',
-  description: 'Você está convidado para celebrar nosso amor. 15 de Março de 2025',
+  description: 'Você está convidado para celebrar nosso amor. 18 de Julho de 2026',
   generator: 'v0.app',
   icons: {
     icon: [

@@ -9,23 +9,31 @@ import { Button } from "@/components/ui/button"
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=2070&auto=format&fit=crop",
+    src: "/photos/gallery/1.jpg",
     alt: "Casal em momento romântico",
   },
   {
-    src: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=2069&auto=format&fit=crop",
+    src: "/photos/gallery/2.jpg",
     alt: "Casal no pôr do sol",
   },
   {
-    src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070&auto=format&fit=crop",
+    src: "/photos/gallery/3.jpg",
     alt: "Momento especial do casal",
   },
   {
-    src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=2071&auto=format&fit=crop",
+    src: "/photos/gallery/4.jpg",
     alt: "Casal feliz",
   },
   {
-    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop",
+    src: "/photos/gallery/5.jpg",
+    alt: "Casal caminhando juntos",
+  },
+  {
+    src: "/photos/gallery/6.jpg",
+    alt: "Casal caminhando juntos",
+  },
+  {
+    src: "/photos/gallery/7.jpg",
     alt: "Casal caminhando juntos",
   },
 ]
@@ -33,7 +41,7 @@ const galleryImages = [
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 4000, stopOnInteraction: false }),
+    Autoplay({ delay: 2500, stopOnInteraction: false }),
   ])
 
   const scrollPrev = useCallback(() => {
@@ -63,17 +71,17 @@ export function GallerySection() {
   }, [selectedImage])
 
   return (
-    <section className="py-20 md:py-32 bg-muted/50">
+    <section className="pb-20 md:py-32  bg-background"> {/* bg-muted/50 */}
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4 font-light">
-            Nossa História
+            Nosso pré-wedding
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground">
             Galeria do Casal

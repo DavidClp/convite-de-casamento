@@ -16,8 +16,8 @@ export default function WeddingPage() {
       <CountdownSection />
       <InvitationTextSection />
       <EventInfoSection />
-      <TimelineSection />
       <GallerySection />
+     {/*  <TimelineSection /> */}
       <MapSection />
       <RSVPSection />
       <FooterSection />

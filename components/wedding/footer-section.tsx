@@ -25,7 +25,7 @@ export function FooterSection() {
             celebrar com você!
           </p>
 
-          <div className="flex items-center justify-center gap-6 mb-8">
+      {/*     <div className="flex items-center justify-center gap-6 mb-8">
             <a
               href="https://instagram.com"
               target="_blank"
@@ -40,16 +40,16 @@ export function FooterSection() {
             >
               <Mail className="w-5 h-5" />
             </a>
-          </div>
+          </div> */}
 
           <p className="text-xs text-background/50 tracking-wider uppercase">
-            15 de Março de 2025 • Campinas, SP
+            18 de Julho de 2026 • Cacoal, RO
           </p>
 
           <div className="mt-8 pt-8 border-t border-background/10">
             <p className="text-xs text-background/40">
               Feito com{" "}
-              <Heart className="w-3 h-3 inline-block text-primary" fill="currentColor" />{" "}
+              <Heart className="w-3 h-3 inline-block text-white/80" fill="currentColor" />{" "}
               para nosso dia especial
             </p>
           </div>
