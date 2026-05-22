@@ -1,10 +1,10 @@
 services:
-  lms-frontend:
+  convite-casamento:
     build:
       context: .
       args:
         API_URL: ${API_URL}
-    container_name: lms-frontend
+    container_name: convite-casamento
     restart: always
     networks:
       - proxy

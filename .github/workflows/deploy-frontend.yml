@@ -24,16 +24,16 @@ jobs:
             set -e
 
             # Clona ou atualiza o repositório
-            if [ ! -d "/home/david/lms-frontend/.git" ]; then
-              rm -rf /home/david/lms-frontend
-              git clone https://github.com/${{ github.repository }} /home/david/lms-frontend
+            if [ ! -d "/home/david/convite-casamento/.git" ]; then
+              rm -rf /home/david/convite-casamento
+              git clone https://github.com/${{ github.repository }} /home/david/convite-casamento
             else
-              cd /home/david/lms-frontend
+              cd /home/david/convite-casamento
               git fetch origin main
               git reset --hard origin/main
             fi
 
-            cd /home/david/lms-frontend
+            cd /home/david/convite-casamento
 
             # Cria o .env
             echo "API_URL=${{ secrets.API_URL }}" > .env
