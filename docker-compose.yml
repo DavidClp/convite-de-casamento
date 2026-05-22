@@ -1,0 +1,18 @@
+services:
+  lms-frontend:
+    build:
+      context: .
+      args:
+        API_URL: ${API_URL}
+    container_name: lms-frontend
+    restart: always
+    networks:
+      - proxy
+    ports:
+      - "3097:3097" 
+    environment:
+      API_URL: ${API_URL}
+
+networks:
+  proxy:
+    external: true
