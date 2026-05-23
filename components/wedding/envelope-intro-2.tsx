@@ -110,13 +110,13 @@ export function EnvelopeIntro2({ onOpen }: { onOpen: () => void }) {
                 }}
                 className="z-[999] bg-white rounded-md shadow-2xl"
               >
-                <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/photos/main.jpg')` }}>
+                <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/photos/main.webp')` }}>
                 </div>
               </motion.div>
             )}
             {!open && (
               <div className="w-full z-[12] p-4 h-full rounded-[6px] bg-white shadow-xl border border-neutral-200 flex flex-col items-center justify-center">
-                <img src="/photos/main.jpg" alt="Envelope" className="w-full h-full object-cover" />
+                <img src="/photos/main.webp" alt="Envelope" className="w-full h-full object-cover" />
               </div>
             )
             }
