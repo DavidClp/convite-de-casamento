@@ -80,7 +80,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={revealSite ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: revealSite ? 0.35 : 0 }}
-            className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light mt-[90px] mb-[280px]"
+            className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light mt-[90px] mb-[380px]"
           >
             Vamos nos casar
           </motion.p>
@@ -102,26 +102,23 @@ export function HeroSection() {
               revealSite ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }
             }
             transition={{ duration: 0.8, delay: revealSite ? 0.5 : 0 }}
-            className="text-center"
+            className="text-center mb-2"
           >
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-wide">
-              Nathalia
+            <h1 className="font-serif text-3xl md:text-7xl lg:text-8xl font-light tracking-wide">
+              Nathalia & David
             </h1>
             <div className="flex items-center justify-center gap-4 my-1">
               <span className="w-16 md:w-24 h-px bg-white/60" />
               <Heart className="w-5 h-5 text-white/80" fill="currentColor" />
               <span className="w-16 md:w-24 h-px bg-white/60" />
             </div>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-wide">
-              David
-            </h1>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={revealSite ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.8, delay: revealSite ? 0.65 : 0 }}
-            className="space-y-3 "
+            className="space-y-1 "
           >
             <p className="text-xl md:text-2xl font-serif italic font-light">
               {"\"O início do nosso para sempre\""}
