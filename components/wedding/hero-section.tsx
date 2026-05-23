@@ -18,9 +18,9 @@ export function HeroSection() {
   const handleOpenLetter = () => {
     if (letterOpen) return
     setLetterOpen(true)
-    window.setTimeout(() =>{
+    window.setTimeout(() => {
       setOverlayGone(true)
-/*       shootHearts() */
+      /*       shootHearts() */
     }, OPEN_MS)
   }
 
@@ -65,7 +65,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <div className="text-white flex flex-col z-50 items-center">{/* relative z-10 text-white px-4  max-w-4xl mx-auto */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={
@@ -80,22 +80,34 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={revealSite ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: revealSite ? 0.35 : 0 }}
-            className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light"
+            className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light mt-[100px] mb-[270px]"
           >
             Vamos nos casar
           </motion.p>
+        </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={
+            revealSite
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 24 }
+          }
+          transition={{ duration: 1, delay: revealSite ? 0.15 : 0 }}
+          className="space-y-6"
+        >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={
               revealSite ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }
             }
             transition={{ duration: 0.8, delay: revealSite ? 0.5 : 0 }}
+            className="text-center"
           >
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-wide">
               Nathalia
             </h1>
-            <div className="flex items-center justify-center gap-4 my-4">
+            <div className="flex items-center justify-center gap-4 my-1">
               <span className="w-16 md:w-24 h-px bg-white/60" />
               <Heart className="w-5 h-5 text-white/80" fill="currentColor" />
               <span className="w-16 md:w-24 h-px bg-white/60" />
@@ -109,7 +121,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={revealSite ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.8, delay: revealSite ? 0.65 : 0 }}
-            className="space-y-4 pt-6"
+            className="space-y-3 "
           >
             <p className="text-xl md:text-2xl font-serif italic font-light">
               {"\"O início do nosso para sempre\""}
@@ -153,7 +165,7 @@ export function HeroSection() {
           </motion.div>
         )}
       </AnimatePresence>
-  {/*     <AnimatePresence>
+      {/*     <AnimatePresence>
         {!overlayGone && (
           <motion.div
             key="letter"
