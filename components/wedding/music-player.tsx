@@ -143,7 +143,7 @@ export function MusicPlayer() {
         aria-hidden
       />
 
-      <AnimatePresence>
+   {/*    <AnimatePresence>
         {showTooltip && (
           <motion.div
             initial={{ opacity: 0, x: 10 }}
@@ -152,7 +152,7 @@ export function MusicPlayer() {
             className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-card border border-border rounded-lg px-3 py-2 shadow-lg whitespace-nowrap"
           >
             <p className="text-xs text-foreground flex items-center gap-2">
-              <Music className="w-3 h-3 text-primary" />
+              <Music className="w-2 h-2 text-primary" />
               Toque para ouvir nossa música
             </p>
             <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full">
@@ -161,11 +161,11 @@ export function MusicPlayer() {
           </motion.div>
         )}
       </AnimatePresence>
-
+ */}
       <Button
         onClick={toggleMusic}
         size="icon"
-        className={`w-14 h-14 rounded-full z-999 shadow-lg transition-all duration-300 ${
+        className={`w-10 h-10 rounded-full z-999 shadow-lg transition-all duration-300 ${
           isPlaying
             ? "bg-primary text-primary-foreground hover:bg-primary/90"
             : "bg-card text-foreground border border-border hover:bg-muted"
