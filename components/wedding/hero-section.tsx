@@ -134,12 +134,12 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      {revealSite && (
+     {/*  {revealSite && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="absolute bottom-16 left-1/2 z-20 -translate-x-1/2 md:bottom-10"
+          className="absolute bottom-16 left-10 z-20 -translate-x-1/2 md:bottom-10"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -149,7 +149,7 @@ export function HeroSection() {
             <IconHandFinger stroke={2} className="text-white/70" />
           </motion.div>
         </motion.div>
-      )}
+      )} */}
 
       {/* Envelope — tela inicial */}
       <AnimatePresence>
