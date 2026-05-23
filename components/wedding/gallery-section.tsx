@@ -36,6 +36,14 @@ const galleryImages = [
     src: "/photos/gallery/7.jpg",
     alt: "Casal caminhando juntos",
   },
+  {
+    src: "/photos/gallery/8.jpg",
+    alt: "Casal caminhando juntos",
+  },
+  {
+    src: "/photos/gallery/9.jpg",
+    alt: "Casal caminhando juntos",
+  },
 ]
 
 export function GallerySection() {
