@@ -18,7 +18,7 @@ export function EnvelopeIntro2({ onOpen }: { onOpen: () => void }) {
   }
 
   const handleLastAnimationComplete = () => {
-      onOpen()
+    onOpen()
   }
 
   return (
@@ -39,8 +39,8 @@ export function EnvelopeIntro2({ onOpen }: { onOpen: () => void }) {
 
       <div
         className="relative w-[350px] h-[250px] cursor-pointer"
-        onClick={() => setOpen((prev) => !prev)}
-        /* onClick={() => handleOpen(open)} */
+        /*     onClick={() => setOpen((prev) => !prev)} */
+        onClick={() => handleOpen(open)}
         style={{ perspective: 2000 }}
       >
         {/* CARTA */}
@@ -111,11 +111,11 @@ export function EnvelopeIntro2({ onOpen }: { onOpen: () => void }) {
                 className="z-[999] bg-white rounded-md shadow-2xl"
               >
                 <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/photos/main.jpg')` }}>
-                               </div>
+                </div>
               </motion.div>
             )}
             {!open && (
-              <div className="w-full z-[11] p-4 h-full rounded-[6px] bg-white shadow-xl border border-neutral-200 flex flex-col items-center justify-center">
+              <div className="w-full z-[12] p-4 h-full rounded-[6px] bg-white shadow-xl border border-neutral-200 flex flex-col items-center justify-center">
                 <img src="/photos/main.jpg" alt="Envelope" className="w-full h-full object-cover" />
               </div>
             )
@@ -203,7 +203,6 @@ export function EnvelopeIntro2({ onOpen }: { onOpen: () => void }) {
           </motion.div>
         </motion.div>
 
-
         {/* SELO */}
         <motion.div
           animate={{
@@ -213,14 +212,20 @@ export function EnvelopeIntro2({ onOpen }: { onOpen: () => void }) {
           transition={{
             duration: 0.35,
           }}
-          className="absolute left-1/2 top-[92px] z-[10] -translate-x-1/2"
+          className="z-[11] absolute top-[-95px]"/* absolute left-1/2 top-[92px] z-[10] -translate-x-1/2 */
         >
-          <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-red-400 to-red-700 border-[5px] border-red-300 shadow-2xl flex items-center justify-center">
+          {/* <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-red-400 to-red-700 border-[5px] border-red-300 shadow-2xl flex items-center justify-center">
             <span className="text-white font-serif text-xl">
               N&D
             </span>
-          </div>
+          </div> */}
+
+          <img src="/photos/selo.png" alt="Selo" className="" />
         </motion.div>
+
+        <img src="/photos/flores.png" alt="Flores" className={`absolute top-[-100px] ${isVisibleEnvelope ? "z-[11]" : "z-0"}`}/>
+
+      {/*   <img src="/photos/envelope.png" alt="Flores" className={`absolute top-[-100px] ${isVisibleEnvelope ? "z-[10]" : "z-0"}`}/> */}
       </div>
     </div>
   )

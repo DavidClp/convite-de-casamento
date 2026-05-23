@@ -69,7 +69,7 @@ export function RSVPSection() {
         body: JSON.stringify({
           nome: formData.name.trim(),
           quantidade_pessoas: parseInt(formData.guests, 10),
-          mensagem: formData.message.trim() || undefined,
+          observacao: formData.message.trim() || undefined,
         }),
       })
 

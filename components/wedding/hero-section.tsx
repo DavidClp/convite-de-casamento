@@ -9,7 +9,7 @@ import { EnvelopeIntro2 } from "./envelope-intro-2"
 import confetti from "canvas-confetti"
 
 /** Aba superior abre (~1.35s) + pausa antes do fade */
-const OPEN_MS = 500
+const OPEN_MS = 100
 
 export function HeroSection() {
   const [letterOpen, setLetterOpen] = useState(false)
@@ -80,7 +80,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={revealSite ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: revealSite ? 0.35 : 0 }}
-            className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light mt-[100px] mb-[270px]"
+            className="text-sm md:text-base tracking-[0.3em] uppercase font-sans font-light mt-[90px] mb-[280px]"
           >
             Vamos nos casar
           </motion.p>
