@@ -9,39 +9,39 @@ import { Button } from "@/components/ui/button"
 
 const galleryImages = [
   {
-    src: "/photos/gallery/1.jpg",
+    src: "/photos/gallery/1.webp",
     alt: "Casal em momento romântico",
   },
   {
-    src: "/photos/gallery/2.jpg",
+    src: "/photos/gallery/2.webp",
     alt: "Casal no pôr do sol",
   },
   {
-    src: "/photos/gallery/3.jpg",
+    src: "/photos/gallery/3.webp",
     alt: "Momento especial do casal",
   },
   {
-    src: "/photos/gallery/4.jpg",
+    src: "/photos/gallery/4.webp",
     alt: "Casal feliz",
   },
   {
-    src: "/photos/gallery/5.jpg",
+    src: "/photos/gallery/5.webp",
     alt: "Casal caminhando juntos",
   },
   {
-    src: "/photos/gallery/6.jpg",
+    src: "/photos/gallery/6.webp",
     alt: "Casal caminhando juntos",
   },
   {
-    src: "/photos/gallery/7.jpg",
+    src: "/photos/gallery/7.webp",
     alt: "Casal caminhando juntos",
   },
   {
-    src: "/photos/gallery/8.jpg",
+    src: "/photos/gallery/8.webp",
     alt: "Casal caminhando juntos",
   },
   {
-    src: "/photos/gallery/9.jpg",
+    src: "/photos/gallery/9.webp",
     alt: "Casal caminhando juntos",
   },
 ]
