@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
-  const apiUrl = process.env.API_URL
+  const apiUrl = 'https://lms-api.bikoservicos.com.br/api/'
 
   if (!apiUrl) {
     return NextResponse.json(
