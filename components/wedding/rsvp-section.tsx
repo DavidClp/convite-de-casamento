@@ -159,7 +159,7 @@ export function RSVPSection() {
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
             Sua presença é o melhor presente que poderíamos receber.
-            Confirme até 12 de Junho de 2026.
+            Confirme até 30 de Junho de 2026.
           </p>
         </motion.div>
 
